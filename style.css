@@ -1,19 +1,19 @@
 /* ==========================================================================
-   IRP LMS - Official Stylesheet
-   Color Palette & Custom Properties defined as per project specifications
+   IRP LMS - Official Stylesheet (Responsive Web Design & Foundations)
+   Design Tokens & CSS Variables defined as per section 2.3 specification
    ========================================================================== */
 :root {
-  --primary-navy: #003366;
-  --primary-orange: #FE781E;
-  --secondary-blue: #5F9FE0;
-  --light-blue-bg: #E2F2FD;
-  --white: #FFFFFF;
-  --light-blue-border: #D6E9FF;
-  --text-muted: #556987;
-  --text-dark: #1e293b;
+  --color-primary-navy: #003366;
+  --color-primary-orange: #FE781E;
+  --color-secondary-blue: #5F9FE0;
+  --color-bg-light: #E2F2FD;
+  --color-card-bg: #FFFFFF;
+  --color-border-light: #D6E9FF;
+  --color-text-muted: #556987;
+  --color-text-dark: #1e293b;
 }
 
-/* Base Reset & Typography */
+/* Base Reset & Box Model */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,8 +22,8 @@
 
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  color: var(--text-dark);
-  background-color: var(--white);
+  color: var(--color-text-dark);
+  background-color: var(--color-card-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -40,18 +40,22 @@ img {
 }
 
 /* ==========================================================================
-   Navigation Bar (Shared across all pages)
+   Navigation Bar (Top Header & CSS Positioning Requirement)
+   Positioned at the top of the webpage using CSS positioning (sticky with z-index)
    ========================================================================== */
 header {
-  background-color: var(--white);
-  border-bottom: 1px solid var(--light-blue-border);
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--color-card-bg);
+  border-bottom: 1px solid var(--color-border-light);
   padding: 16px 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 51, 102, 0.04);
 }
 
 .brand {
@@ -60,7 +64,7 @@ header {
   gap: 12px;
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--primary-navy);
+  color: var(--color-primary-navy);
 }
 
 .brand img {
@@ -71,13 +75,13 @@ header {
 nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 36px;
 }
 
 nav a {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--primary-navy);
+  color: var(--color-primary-navy);
   padding: 8px 4px;
   position: relative;
   transition: color 0.2s ease;
@@ -85,7 +89,7 @@ nav a {
 
 nav a:hover,
 nav a.active {
-  color: var(--primary-orange);
+  color: var(--color-primary-orange);
 }
 
 nav a.active::after {
@@ -95,7 +99,7 @@ nav a.active::after {
   bottom: -4px;
   width: 100%;
   height: 2px;
-  background-color: var(--primary-orange);
+  background-color: var(--color-primary-orange);
   border-radius: 2px;
 }
 
@@ -113,9 +117,9 @@ nav a.active::after {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
-  border: 2px solid var(--primary-orange);
-  background-color: var(--primary-orange);
-  color: var(--white);
+  border: 2px solid var(--color-primary-orange);
+  background-color: var(--color-primary-orange);
+  color: var(--color-card-bg);
 }
 
 .btn:hover {
@@ -125,16 +129,16 @@ nav a.active::after {
 
 .btn-outline {
   background-color: transparent;
-  color: var(--primary-orange);
+  color: var(--color-primary-orange);
 }
 
 .btn-outline:hover {
-  background-color: var(--primary-orange);
-  color: var(--white);
+  background-color: var(--color-primary-orange);
+  color: var(--color-card-bg);
 }
 
 /* ==========================================================================
-   Page Layout & Reusable Container
+   Page Layout & Container
    ========================================================================== */
 main {
   max-width: 1200px;
@@ -143,21 +147,21 @@ main {
 }
 
 /* ==========================================================================
-   Hero Banner (Shared on Home, Courses, and Contact)
+   Hero Banner
    ========================================================================== */
 .hero {
-  background-color: var(--light-blue-bg);
+  background-color: var(--color-bg-light);
   border-radius: 16px;
   padding: 48px 44px;
   display: grid;
   grid-template-columns: 1.25fr 0.85fr;
   align-items: center;
   gap: 32px;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
 .kicker {
-  color: var(--primary-orange);
+  color: var(--color-primary-orange);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -166,23 +170,23 @@ main {
 }
 
 .hero h1 {
-  font-size: 2.4rem;
+  font-size: 2.5rem;
   font-weight: 800;
-  color: var(--primary-navy);
+  color: var(--color-primary-navy);
   line-height: 1.2;
   margin-bottom: 16px;
 }
 
 .hero h1 .accent {
-  color: var(--primary-orange);
+  color: var(--color-primary-orange);
 }
 
 .hero p {
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   font-size: 1.05rem;
   line-height: 1.6;
   margin-bottom: 24px;
-  max-width: 540px;
+  max-width: 520px;
 }
 
 .hero-image {
@@ -192,7 +196,7 @@ main {
 }
 
 .hero-image img {
-  max-height: 260px;
+  max-height: 280px;
   width: auto;
   object-fit: contain;
 }
@@ -207,15 +211,16 @@ main {
 .section-header h2 {
   font-size: 1.85rem;
   font-weight: 800;
-  color: var(--primary-navy);
+  color: var(--color-primary-navy);
   margin-bottom: 6px;
 }
 
 .section-header p {
-  color: var(--text-muted);
+  color: var(--color-secondary-blue);
   font-size: 1rem;
 }
 
+/* Desktop View (> 1024px): Exact 5-column horizontal row */
 .journey-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -223,10 +228,10 @@ main {
 }
 
 .journey-card {
-  background-color: var(--white);
-  border: 1px solid var(--light-blue-border);
-  border-radius: 12px;
-  padding: 24px 20px;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: 10px;
+  padding: 20px 18px;
   box-shadow: 0 4px 14px rgba(0, 51, 102, 0.04);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -240,21 +245,21 @@ main {
   display: block;
   font-size: 2.2rem;
   font-weight: 800;
-  color: var(--primary-orange);
+  color: var(--color-primary-orange);
   line-height: 1;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .journey-card h3 {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--primary-navy);
+  color: var(--color-primary-navy);
   margin-bottom: 8px;
 }
 
 .journey-card p {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   line-height: 1.45;
 }
 
@@ -268,8 +273,8 @@ main {
 }
 
 .course-card {
-  background-color: var(--white);
-  border: 1px solid var(--light-blue-border);
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border-light);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 14px rgba(0, 51, 102, 0.04);
@@ -306,22 +311,20 @@ main {
 .course-info h3 {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--primary-navy);
+  color: var(--color-primary-navy);
   margin-bottom: 8px;
 }
 
 .course-info p {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   line-height: 1.45;
 }
 
-/* ==========================================================================
-   Courses Page: Explore More Banner
-   ========================================================================== */
+/* Explore More Courses Banner */
 .explore-bar {
-  background-color: var(--light-blue-bg);
-  border: 1px solid var(--light-blue-border);
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
   border-radius: 12px;
   padding: 24px 32px;
   margin-top: 40px;
@@ -342,32 +345,32 @@ main {
   grid-template-columns: repeat(3, 6px);
   grid-gap: 4px;
   padding: 10px;
-  background: var(--white);
-  border: 1px solid var(--light-blue-border);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-light);
   border-radius: 8px;
 }
 
 .grid-icon span {
   width: 6px;
   height: 6px;
-  background-color: var(--primary-orange);
+  background-color: var(--color-primary-orange);
   border-radius: 50%;
 }
 
 .explore-details h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--primary-navy);
+  color: var(--color-primary-navy);
   margin-bottom: 2px;
 }
 
 .explore-details p {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 /* ==========================================================================
-   Contact Page: Two-Column Layout (Info Panel + Message Form)
+   Contact Page Layout
    ========================================================================== */
 .contact-layout {
   display: grid;
@@ -377,8 +380,8 @@ main {
 }
 
 .contact-info {
-  background-color: var(--light-blue-bg);
-  border: 1px solid var(--light-blue-border);
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
   border-radius: 12px;
   padding: 36px 32px;
 }
@@ -386,13 +389,13 @@ main {
 .contact-info h2 {
   font-size: 1.6rem;
   font-weight: 800;
-  color: var(--primary-navy);
+  color: var(--color-primary-navy);
   margin-bottom: 10px;
 }
 
 .contact-info .lead {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   line-height: 1.5;
   margin-bottom: 30px;
 }
@@ -408,26 +411,26 @@ main {
 .info-item h4 {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--primary-orange);
+  color: var(--color-primary-orange);
   margin-bottom: 4px;
 }
 
 .info-item a,
 .info-item address {
   font-size: 0.95rem;
-  color: var(--text-dark);
+  color: var(--color-text-dark);
   font-style: normal;
   line-height: 1.5;
 }
 
 .info-item a:hover {
-  color: var(--primary-orange);
+  color: var(--color-primary-orange);
   text-decoration: underline;
 }
 
 .contact-form {
-  background-color: var(--white);
-  border: 1px solid var(--light-blue-border);
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border-light);
   border-radius: 12px;
   padding: 36px 32px;
   box-shadow: 0 4px 14px rgba(0, 51, 102, 0.04);
@@ -436,13 +439,13 @@ main {
 .contact-form h2 {
   font-size: 1.6rem;
   font-weight: 800;
-  color: var(--primary-navy);
+  color: var(--color-primary-navy);
   margin-bottom: 4px;
 }
 
 .contact-form .form-subtitle {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 26px;
 }
 
@@ -461,7 +464,7 @@ main {
 label {
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--primary-navy);
+  color: var(--color-primary-navy);
   margin-bottom: 6px;
 }
 
@@ -472,9 +475,9 @@ textarea {
   padding: 11px 14px;
   font-size: 0.95rem;
   font-family: inherit;
-  color: var(--text-dark);
-  background-color: var(--white);
-  border: 1px solid var(--light-blue-border);
+  color: var(--color-text-dark);
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border-light);
   border-radius: 8px;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -483,7 +486,7 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--primary-orange);
+  border-color: var(--color-primary-orange);
   box-shadow: 0 0 0 3px rgba(254, 120, 30, 0.15);
 }
 
@@ -508,26 +511,26 @@ textarea {
    Footer
    ========================================================================== */
 footer {
-  border-top: 1px solid var(--light-blue-border);
-  padding: 24px 20px;
+  border-top: 1px solid var(--color-border-light);
+  padding: 28px 20px;
   text-align: center;
   font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-top: 40px;
+  color: var(--color-text-muted);
+  margin-top: 60px;
 }
 
 /* ==========================================================================
-   Responsive Web Design (Tablet & Mobile Media Queries)
+   Responsive Breakpoints: Tablet (768px - 1024px)
    ========================================================================== */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .hero {
     grid-template-columns: 1fr;
-    padding: 36px 28px;
+    padding: 36px 30px;
     text-align: center;
   }
 
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
 
   .hero p {
@@ -537,7 +540,7 @@ footer {
   }
 
   .hero-image img {
-    max-height: 220px;
+    max-height: 230px;
   }
 
   .journey-grid {
@@ -553,37 +556,56 @@ footer {
   }
 }
 
-@media (max-width: 640px) {
+/* ==========================================================================
+   Responsive Breakpoints: Mobile (<= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Navigation Bar: Desktop links collapse/hide. Retains logo left, Sign In right */
   header {
-    flex-wrap: wrap;
-    gap: 16px;
     padding: 14px 16px;
   }
 
   nav {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    gap: 20px;
-    padding-top: 8px;
-    border-top: 1px solid var(--light-blue-border);
+    display: none;
   }
 
   main {
-    padding: 20px 14px 40px;
+    padding: 20px 16px 40px;
   }
 
   .hero {
-    padding: 28px 20px;
+    padding: 28px 18px;
     border-radius: 12px;
+    margin-bottom: 36px;
   }
 
   .hero h1 {
-    font-size: 1.65rem;
+    font-size: 1.7rem;
   }
 
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .hero-image img {
+    max-height: 190px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  /* Strict 1-column vertical stack */
   .journey-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .journey-card {
+    padding: 18px 16px;
+  }
+
+  .step-number {
+    font-size: 1.9rem;
+    margin-bottom: 8px;
   }
 
   .courses-grid {
